@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    stages
+    stages {
         stage("terraform init") {
             steps {
                 sh 'terraform init'
@@ -22,4 +22,5 @@ pipeline {
                 sh 'terraform ${action} --auto-approve'
                 }
         }
+   }
 }
