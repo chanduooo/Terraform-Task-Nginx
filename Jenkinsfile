@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+                 choice choices: ['apply', 'destroy'], name: 'action'
+                }
 
     stages {
         stage("aws credentials") {
@@ -9,9 +12,6 @@ pipeline {
 		}
 	}
 	}
-	parameters {
- 		 choice choices: ['apply', 'destroy'], name: 'action'
-		}
         stage("terraform init") {
             steps {
                 sh 'terraform init'
